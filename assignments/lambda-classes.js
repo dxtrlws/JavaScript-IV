@@ -44,7 +44,7 @@ class Instructor extends Person {
     return `${student.name} recieves a perfect score on ${subject}`;
   }
   grading() {
-    let num = Math.floor (Math.random()*99) +1
+    let num = Math.floor (Math.random()*50) +1
     num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
       return num;
   }
