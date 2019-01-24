@@ -155,10 +155,3 @@ console.log(cory.grade(amy, "CSS"));
 console.log(cory.standUp("WebPt4"));
 console.log(cory.debugCode("Cory", amy));
 
-const array1 = ["a", "b", "c"];
-
-let sd = array1.forEach(element => {
-  console.log(element);
-});
-
-console.log(sd);
