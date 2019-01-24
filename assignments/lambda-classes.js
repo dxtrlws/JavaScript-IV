@@ -43,6 +43,11 @@ class Instructor extends Person {
   grade(student, subject) {
     return `${student.name} recieves a perfect score on ${subject}`;
   }
+  grading() {
+    let num = Math.floor (Math.random()*99) +1
+    num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+      return num;
+  }
 }
 
 // #### Student
@@ -64,6 +69,7 @@ class Student extends Person {
     this.previousBackground = properties.previousBackground;
     this.className = properties.className;
     this.favSubjects = properties.favSubjects;
+    this.grade = properties.grade;
   }
   listsSubjects(subjects) {
     return subjects.toString();
@@ -73,6 +79,14 @@ class Student extends Person {
   }
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+  graduate(name) {
+      let currentGrade = this.grade + (name.grading());
+      if (currentGrade <= 70) {
+          return `${this.name} is ready for graduation`
+      } else {
+          return `${this.name} has more work to do.`
+      }
   }
 }
 
@@ -116,6 +130,7 @@ const amy = new Student({
   location: "Hawaii",
   age: 32,
   gender: "female",
+  grade: 99,
   className: "WebPt4",
   previousBackground: "Travel blogger",
   favSubjects: ["React", "Node", "C#"]
@@ -146,6 +161,9 @@ console.log(amy.PRAssigment("react"));
 console.log(amy.sprintChallenge("JavaScript"));
 console.log(amy.listsSubjects(amy.favSubjects));
 
+// Stretch goals
+console.log(amy.graduate(fred))
+
 // Project Manager
 console.log(cory.name);
 console.log(cory.speak());
@@ -154,4 +172,13 @@ console.log(cory.demo("CSS"));
 console.log(cory.grade(amy, "CSS"));
 console.log(cory.standUp("WebPt4"));
 console.log(cory.debugCode("Cory", amy));
+
+
+// #### Stretch Problem
+
+// * Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
+// * Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
+// * Add a graduate method to a student.
+//   * This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
+//   * If the student's grade is above a 70% let them graduate! Otherswise go back to grading their assignments to increase their score.
 
